@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
 
+
 const Title = styled.h1`
   font-size: 48px;
   color: ${(props) => props.theme.accentColor};
@@ -27,14 +28,12 @@ const Header = styled.header`
   align-items: center;
 `;
 
-const CoinsList = styled.ul`
-
-`;
+const CoinsList = styled.ul``;
 
 const Coin = styled.li`
   background-color: white;
-  color:${props => props.theme.bgColor};
-  
+  color:${props => props.theme.textColor};
+  border: 1px solid;
   border-radius: 15px;
   margin-bottom: 10px;
   a{

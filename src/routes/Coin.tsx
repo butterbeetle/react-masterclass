@@ -5,6 +5,9 @@ import { useLocation, useParams, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+
 const Title = styled.h1`
   font-size: 48px;
   color: ${(props) => props.theme.accentColor};
@@ -65,12 +68,30 @@ const Tab = styled.span<{ isActive: boolean }>`
   background-color: rgba(0, 0, 0, 0.5);
   padding: 7px 0px;
   border-radius: 10px;
-  color: ${(props) =>
-    props.isActive ? props.theme.accentColor : props.theme.textColor};
+  color: ${(props) => props.isActive ? props.theme.accentColor : props.theme.textColor};
   a {
     display: block;
   }
 `;
+
+const Btn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 25px 0px 0px 0px;
+  border-radius: 15px;
+  width: 40px;
+  height: 40px;
+  font-size: 25px;
+  
+  background-color: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.textColor};
+  &:hover {
+    background-color: ${(props) => props.theme.textColor};
+    color: ${(props) => props.theme.accentColor};
+  }
+`;
+
 interface RouteParams {
   coinId: string;
 }
@@ -136,6 +157,7 @@ interface IPriceData {
   };
 }
 
+
 function Coin() {
   const { coinId } = useParams<keyof RouteParams>() as RouteParams;
   const { state } = useLocation() as RouteState;
@@ -156,6 +178,9 @@ function Coin() {
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </title>
       </Helmet>
+      <Btn>
+        <Link to={`/`}><FontAwesomeIcon icon={faHome} /></Link>
+      </Btn>
       <Header>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
