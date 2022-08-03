@@ -21,10 +21,7 @@ interface ChartProps {
 
 function Chart() {
   const { coinId } = useOutletContext<ChartProps>();
-  const { isLoading, data } = useQuery<IHistoryData[]>(["ohlcv", coinId], () => fetchCoinHistory(coinId),
-    {
-      refetchInterval: 10000,
-    });
+  const { isLoading, data } = useQuery<IHistoryData[]>(["ohlcv", coinId], () => fetchCoinHistory(coinId));
   return <div>{isLoading ? "Loading chart..." :
     <ApexChart
       type="line"
@@ -57,7 +54,7 @@ function Chart() {
           show: false,
         },
         xaxis: {
-          labels: { show: false, },
+          labels: { show: false },
           axisTicks: { show: false },
           axisBorder: { show: false },
           type: "datetime",

@@ -1,13 +1,6 @@
 import Router from "./Router";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { darkTheme, lightTheme } from './theme';
-import { ReactQueryDevtools } from "react-query/devtools"
-
-import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon } from "@fortawesome/free-solid-svg-icons";
-import { faSun } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { theme } from './theme';
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -74,24 +67,9 @@ a {
 }
 `;
 
-const Btn = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;
-  width: 40px;
-  height: 40px;
-  font-size: 25px;
-`;
-
 function App() {
-  const [mode, setMode] = useState(true);
-  const chgMode = () => setMode(!mode);
   return <>
-    <Btn onClick={chgMode}>
-      <FontAwesomeIcon icon={mode ? faMoon : faSun} />
-    </Btn>
-    <ThemeProvider theme={mode ? darkTheme : lightTheme}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Router />
     </ThemeProvider>
