@@ -10,18 +10,28 @@ function ToDo({ text, category, id }: IToDo) {
     } = event;
     setToDos(oldToDos => {
       const targetIndex = oldToDos.findIndex(toDo => toDo.id === id);
-      const oldToDo = oldToDos[targetIndex];
-      const newToDo = { text, id, category: name };
-      console.log("replace the to d in the index", targetIndex, "with", newToDo);
-      return oldToDos;
+      const newToDo = { text, id, category: name as any };
+      return [...oldToDos.slice(0, targetIndex), newToDo, ...oldToDos.slice(targetIndex + 1)];
     });
   }
   return (
     <li>
       <span>{text}</span>
-      {category !== "DOING" && <button onClick={onClick}>Doing</button>}
-      {category !== "TO_DO" && <button onClick={onClick}>To Do</button>}
-      {category !== "DONE" && <button onClick={onClick}>Done</button>}
+      {category !== "DOING" && (
+        <button name="DOING" onClick={onClick}>
+          Doing
+        </button>
+      )}
+      {category !== "TO_DO" && (
+        <button name="TO_DO" onClick={onClick}>
+          To Do
+        </button>
+      )}
+      {category !== "DONE" && (
+        <button name="DONE" onClick={onClick}>
+          Done
+        </button>
+      )}
     </li>
   );
 }
