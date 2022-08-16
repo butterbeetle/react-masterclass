@@ -7,6 +7,8 @@
 #5.2 npm i recoil
 #5.6 npm i react-hook-form
 #6.0 npm i --save-dev @types/uuid (난수)
+#6.2 npm i react-beautiful-dnd --legacy-peer-deps
+#6.2 npm i --save-dev @types/react-beautiful-dnd
 
 #4.15 npm i react-helmet
 for fontawesome
