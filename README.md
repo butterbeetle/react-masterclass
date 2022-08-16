@@ -6,7 +6,7 @@
 #4.13 npm install --save react-apexcharts apexcharts
 #5.2 npm i recoil
 #5.6 npm i react-hook-form
-
+#6.0 npm i --save-dev @types/uuid (난수)
 
 #4.15 npm i react-helmet
 for fontawesome
