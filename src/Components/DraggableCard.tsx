@@ -15,18 +15,19 @@ interface IDraggableCardProps {
 }
 
 function DraggableCard({ toDo, index }: IDraggableCardProps) {
-  console.log(toDo, "has been rendered")
-  return (<Draggable key={toDo} draggableId={toDo} index={index}>
-    {(magic) => (
-      <Card
-        ref={magic.innerRef}
-        {...magic.dragHandleProps}
-        {...magic.draggableProps}
-      >
-        {toDo}
-      </Card>
-    )}
-  </Draggable>);
+  return (
+    <Draggable key={toDo} draggableId={toDo} index={index}>
+      {(magic) => (
+        <Card
+          ref={magic.innerRef}
+          {...magic.dragHandleProps}
+          {...magic.draggableProps}
+        >
+          {toDo}
+        </Card>
+      )}
+    </Draggable>
+  );
 }
 
 export default React.memo(DraggableCard);
