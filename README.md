@@ -11,6 +11,8 @@
 #6.2 npm i --save-dev @types/react-beautiful-dnd
 #6.14 npm install react-hook-form
 
+#codeChallenge npm i recoil-persist (for localStorage)
+
 #4.15 npm i react-helmet
 for fontawesome
 npm i @fortawesome/fontawesome-svg-core
