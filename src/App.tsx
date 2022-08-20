@@ -1,10 +1,9 @@
-
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { useRecoilState } from "recoil";
 import { toDoState } from "./atoms";
 import styled from "styled-components";
 import Board from "./Components/Board";
-import TrashCan from "./Components/TrashCan";
+import DelTodo from "./Components/DelTodo";
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,9 +26,23 @@ function App() {
   const [toDos, setToDos] = useRecoilState(toDoState);
   const onDragEnd = (info: DropResult) => {
     const { destination, source } = info;
-    if (!destination) return;
-    if (destination?.droppableId === source.droppableId) {
-      // same board movement
+    if (!destination) {
+      // When Not Moving
+      return;
+    }
+    else if (destination?.droppableId === "delTodo") {
+      // Delete Todo Item
+      setToDos((allBoards) => {
+        const delTodo = [...allBoards[source.droppableId]];
+        delTodo.splice(source.index, 1);
+        return {
+          ...allBoards,
+          [source.droppableId]: delTodo
+        };
+      })
+    }
+    else if (destination?.droppableId === source.droppableId) {
+      // Same Board Movement
       setToDos((allBoards) => {
         const boardCopy = [...allBoards[source.droppableId]];
         const taskObj = boardCopy[source.index];
@@ -41,8 +54,8 @@ function App() {
         };
       });
     }
-    if (destination?.droppableId !== source.droppableId) {
-      // cross board movement
+    else if (destination?.droppableId !== source.droppableId) {
+      // Another Board Movement
       setToDos((allBoards) => {
         const sourceBoard = [...allBoards[source.droppableId]];
         const taskObj = sourceBoard[source.index];
@@ -65,7 +78,7 @@ function App() {
             <Board key={boardId} toDos={toDos[boardId]} boardId={boardId} />
           )}
         </Boards>
-        <TrashCan />
+        <DelTodo />
       </Wrapper>
     </DragDropContext>
   );

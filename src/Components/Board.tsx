@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import { Droppable } from "react-beautiful-dnd";
-import styled from "styled-components";
-import DraggableCard from "./DraggableCard";
 import { ITodo, toDoState } from "../atoms";
 import { useSetRecoilState } from "recoil";
+import DraggableCard from "./DraggableCard";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   width: 300px;

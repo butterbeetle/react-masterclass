@@ -22,3 +22,8 @@ export const toDoState = atom<IToDoState>({
   },
   effects_UNSTABLE: [persistAtom],
 })
+
+export const DelTodoState = atom<boolean>({
+  key: "delete",
+  default: false,
+})
