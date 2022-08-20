@@ -11,11 +11,12 @@ function DelTodo() {
   const delTodo = useRecoilValue(DelTodoState);
   return (
     <Droppable droppableId="delTodo">
-      {(magic, info) => (
+      {(magic) => (
         <Test
           ref={magic.innerRef}
           {...magic.droppableProps}
         >
+          {magic.placeholder}
           Good to go
         </Test>
       )}

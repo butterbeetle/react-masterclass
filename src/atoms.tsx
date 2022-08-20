@@ -13,6 +13,11 @@ interface IToDoState {
   [key: string]: ITodo[];
 }
 
+export const boardState = atom<string[]>({
+  key: "board",
+  default: ["To Do", "Doing", "Done"],
+});
+
 export const toDoState = atom<IToDoState>({
   key: "toDo",
   default: {

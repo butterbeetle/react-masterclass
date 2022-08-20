@@ -65,15 +65,17 @@ function Board({ toDos, boardId }: IBoardProps) {
         ...allBoards,
         [boardId]: [...allBoards[boardId], newToDo,] // 새 Todo 생성 위치 , 지금은 마지막에 생성
       }
-    })
+    });
     setValue("toDo", "");
   }
   return (
     <Wrapper>
       <Title>{boardId}</Title>
       <Form onSubmit={handleSubmit(onValid)}>
-        <input {...register("toDo", { required: true })}
-          type={"text"} placeholder={`Add task on ${boardId}`} />
+        <input
+          {...register("toDo", { required: true })}
+          type={"text"}
+          placeholder={`Add task on ${boardId}`} />
       </Form>
       <Droppable droppableId={boardId}>
         {(magic, info) => (
